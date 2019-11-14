@@ -10,5 +10,6 @@ import ie.com.Conor.entities.UserDetails;
 public interface UserService {
 
 	List <UserDetails> getUserDetails();
+	
 
 }
