@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:insert="fragments.html :: head"></div>
+
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu"></div>
+		<h1><span th:text="#{user.heading}">A user</span></h1>
+	</header>
+	
+	<table>
+		<tr>
+			<th th:text="#{user.id}">ID</th>
+		</tr>
+		<tr th:object="${user}">
+			<td th:text="*{userId}">ID</td>
+			<td th:text="*{userFirstName}">FirstName</td>
+		</tr>
+	</table>
+	
+	<footer th:insert="fragments.html :: footer"></footer>
+
+</body>
+</html>

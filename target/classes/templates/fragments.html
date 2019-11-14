@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+	<link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css" />
+		<link rel="stylesheet" th:href="@{/css/flag-icon.css}" type="text/css" />
+	<title>Reverse Auction</title>
+	<link rel="shortcut icon" th:href="@{/favicon_io/favicon.ico}">
+	<meta charset="utf-8" />
+</head>
+<body>
+
+    <div th:fragment="menu">
+    <p>MENU</p>
+    
+    
+    </div>
+<!-- 
+    <div th:fragment="footer">
+		<span th:with="currentUrl=(${@currentUrlWithoutParam.apply('lang')})">
+    		<a th:href="@{${currentUrl}(lang=fr)}"><i class="flag-icon flag-icon-fr"></i></a>
+		</span>
+		
+		<span th:with="currentUrl=(${@currentUrlWithoutParam.apply('lang')})">
+    		<a th:href="@{${currentUrl}(lang=ie)}"><i class="flag-icon flag-icon-ie"></i></a>
+		</span>
+	</div>
+	 -->
+    
+</body>
+</html>
