@@ -22,7 +22,13 @@ public class RegisterUser {
   }
   */
 	
-	@GetMapping
+	@GetMapping(value= {"/registration"})
+	public String handleregistrationRequest() {
+		return "registration";
+		
+		
+	}
+	/*
 	 public String registerUserAccount(Model model) 
 	{
 		
@@ -30,5 +36,5 @@ public class RegisterUser {
 	      return "registration";
 	      
 	}
-
+    */
 }

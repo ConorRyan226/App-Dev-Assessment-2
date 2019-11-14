@@ -7,7 +7,10 @@
 		<div th:insert="fragments.html :: menu"></div>
 	</header>
 	<main>
-		<h1><span th:text="#{index.welcome}">WELCOME</span></h1>
+		<h1><span th:text="#{index.welcome}">default</span></h1>
+		
+		<!-- this works was just testing -->
+		<p><span th:text="#{index.test}">default</span></p>
 	</main>
 	<!-- <footer th:insert="fragments.html :: footer"></footer> -->
 </body>
