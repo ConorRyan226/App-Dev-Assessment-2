@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Configuration
 public class InternationalisationConfig implements WebMvcConfigurer  {
@@ -30,6 +31,12 @@ public class InternationalisationConfig implements WebMvcConfigurer  {
             localeResolver.setDefaultLocale(Locale.UK);
             return localeResolver;
       }
+      
+      @Bean
+  	  public Function<String, String> currentUrlWithoutParam() {
+  		return param -> ServletUriComponentsBuilder.fromCurrentRequest().replaceQueryParam(param).toUriString();
+  	}
+
 
 }
 
