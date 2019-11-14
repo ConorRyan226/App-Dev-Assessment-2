@@ -15,10 +15,15 @@ import lombok.Setter;
 @Table(name = "Bid")
 
 public class Bid {
+	public Bid(double d) {
+		// TODO Auto-generated constructor stub
+		this.bidValue = d;
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int bidId;
-	private float bidValue;
+	private double bidValue;
 	
 	@ManyToOne
 	private Job bidJob;
