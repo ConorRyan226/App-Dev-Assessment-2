@@ -8,11 +8,8 @@
 	</header>
     <h1>Registration</h1>              
 	<form id="newUserForm" method="post" th:action="@{/register}" th:object="${userDetails}">
-		<label for="firstName" th:text="#{newUser.firstName}" ></label>
-			                                      
-		<input type="text" th:field="*{firstName}"/>
-		<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" >Error</span> 
-		
+		<label for="firstName" th:text="#{userDetails.firstName}" ></label>
+			                                    
 		<br>
 		<input type="submit" th:value="#{userDetails.addUser}"/>
 	</form>

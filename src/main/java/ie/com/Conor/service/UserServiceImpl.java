@@ -3,7 +3,6 @@ package ie.com.Conor.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ie.com.Conor.dao.UserDao;
 import ie.com.Conor.entities.UserDetails;
 
@@ -22,6 +21,12 @@ public class UserServiceImpl {
 		if (userDao.existsById(id))
 			return userDao.findNameById(id);
 		return null;
+	}
+	
+	public UserDetails save(UserDetails userDetails) {
+		if (userDao.existsByUserName(userDetails.getFirstName()))
+			return null;
+		return userDao.save(userDetails);	
 	}
 
 

@@ -12,4 +12,6 @@ public interface UserDao extends JpaRepository<UserDetails, Integer>{
 	
 	 @Query("SELECT c.firstName FROM UserDetails c where c.id = :id") 
 	 String findNameById(@Param("id") int id);
+
+	//boolean existsByUserName(String name);
 }

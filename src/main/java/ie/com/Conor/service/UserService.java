@@ -11,5 +11,7 @@ public interface UserService {
 
 	List <UserDetails> getUserDetails();
 	
+	UserDetails save(UserDetails userDetails);
+	
 
 }
