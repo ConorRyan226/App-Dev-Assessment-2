@@ -17,6 +17,12 @@ public class UserServiceImpl {
 	public List<UserDetails> getUserDetails() {
 		return userDao.findAll();
 
-		}
+		}	
+	public String findUserById(int id) {
+		if (userDao.existsById(id))
+			return userDao.findNameById(id);
+		return null;
+	}
+
 
 	}

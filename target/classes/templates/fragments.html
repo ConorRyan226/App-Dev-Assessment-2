@@ -9,11 +9,14 @@
 </head>
 <body>
 
-    <div th:fragment="menu">
-    <p>MENU</p>
+  <div th:fragment="menu">
+		<nav>
+		  <a th:href="@{/register}"><span th:text="#{navigation.userDetails}">BLAH</span></a>
+  </nav>
     
     
-    </div>
+ </div>
+ 
 <!-- 
     <div th:fragment="footer">
 		<span th:with="currentUrl=(${@currentUrlWithoutParam.apply('lang')})">

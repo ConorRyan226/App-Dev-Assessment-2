@@ -18,16 +18,14 @@ import ie.com.Conor.service.UserService;
 //@Controller
 public class UserController {
 	
-	//Not rest API
-	
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping(value = "/list")
-	public String userDetails() {
-        
+	@GetMapping(value = "/userDetails")
+	public String userDetails(Model model) {
 		List<UserDetails> userDetails = userService.getUserDetails();
-		return "index";
+		model.addAttribute("userDetails", userDetails);
+		return "userDetails";
 	}
 
 }
