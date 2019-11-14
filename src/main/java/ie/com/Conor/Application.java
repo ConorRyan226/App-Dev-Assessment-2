@@ -28,6 +28,7 @@ public class Application implements CommandLineRunner{
 		Job kitchen = new Job("Fit kitchen", "IKEA full kitchen", user1);
 		UserDetails user2 = new UserDetails("Tim","Horgan","BigTim@cit.ie","TopDog1");
 		userDao.save(user2);
+		// test
 		
 	}
 
