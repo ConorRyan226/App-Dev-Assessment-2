@@ -29,17 +29,18 @@ import lombok.Setter;
 @Entity
 @Table(name = "USER_DETAILS")
 public class UserDetails {
-	public UserDetails(String string, String string2, String string3, String string4) {
-			this.firstName = string;
-			this.lastName = string2;
-			this.email= string3;
-			this.password = string4;
+	public UserDetails(String firstName, String lastName, String email, String password) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+			this.email= email;
+			this.password = password;
 	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@Column
+	
+	@Column(nullable=false, unique=true)
 	private String firstName;
 	private String lastName;
 	private String email;

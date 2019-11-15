@@ -24,7 +24,7 @@ public class UserServiceImpl {
 	}
 	
 	public UserDetails save(UserDetails userDetails) {
-		if (userDao.existsByUserName(userDetails.getFirstName()))
+		if (userDao.existsById(userDetails.getId()))
 			return null;
 		return userDao.save(userDetails);	
 	}

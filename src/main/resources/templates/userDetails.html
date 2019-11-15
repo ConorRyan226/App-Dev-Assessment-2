@@ -12,7 +12,7 @@
 	
 	<table>
 		<tr>
-			<th th:text="#{userDetials.id}">ID</th>
+			<th th:text="#{userDetails.id}">ID</th>
 		</tr>
 		<tr th:each="userDetails,iterationCount : ${userDetails}" th:class="${iterationCount.odd}? 'odd'" th:object="${userDetails}"	>			
 		<tr th:object="${userDetails}">

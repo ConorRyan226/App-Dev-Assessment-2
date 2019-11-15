@@ -4,6 +4,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ie.com.Conor.Form.UserForm;
@@ -19,24 +20,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RegisterUser {
+
 	@Autowired
 	private UserService userService;
 	
-	/*
 	@GetMapping
 	 public String showRegistrationForm(Model model) 
 	{
 		 return "registration";
   }
-  */
 	
-	@GetMapping
-	 public String registerUserAccount(Model model) 
-	{	
-		  model.addAttribute("registration", userService.toString());
-	      return "registration";     
+	@GetMapping("newUser")
+	public String addNewUser(Model model)
+	{
+		model.addAttribute("userForm", new UserForm());
+		return "userDetails";
 	}
 	
+	@GetMapping("/showUser")
+	public String showUserById(@RequestParam(name="id") int id, Model model)
+	{
+		UserDetails user = userService.findById(id);
+		if (user == null){
+			model.addAttribute("id", id);
+			return "notfounderror";
+		}
+		model.addAttribute("userDetails", userService.findById(id));//create findbyid method 
+		return "userDetails";
+	}
+	
+
+
+	/*
 	@PostMapping("/registration")
 	public String addNewUserSave(@Valid UserForm userForm, BindingResult binding, RedirectAttributes redirectAttributes)
 	{
@@ -52,5 +67,13 @@ public class RegisterUser {
 			redirectAttributes.addFlashAttribute("duplicate", true);
 			return "redirect:registration";
 		}
+	
 	}
+	
+	@GetMapping
+	 public String registerUserAccount(Model model) 
+	{	
+		  model.addAttribute("registration", new RegisterUser());
+	      return "registration";     
+	}*/
 }
