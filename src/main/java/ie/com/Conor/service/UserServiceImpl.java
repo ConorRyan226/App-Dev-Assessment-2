@@ -7,7 +7,7 @@ import ie.com.Conor.dao.UserDao;
 import ie.com.Conor.entities.UserDetails;
 
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserDao userDao;
@@ -27,6 +27,12 @@ public class UserServiceImpl {
 		if (userDao.existsById(userDetails.getId()))
 			return null;
 		return userDao.save(userDetails);	
+	}
+	
+	@Override
+	public UserDetails findById(int id) {
+		// TODO Auto-generated method stub
+		return userDao.findById(id).get();
 	}
 
 

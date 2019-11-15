@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ie.com.Conor.Form.UserForm;
 import ie.com.Conor.entities.UserDetails;
 import ie.com.Conor.service.UserService;
 
-//@Controller
+@Controller
 public class UserController {
 	
 	@Autowired
@@ -26,6 +27,37 @@ public class UserController {
 		List<UserDetails> userDetails = userService.getUserDetails();
 		model.addAttribute("userDetails", userDetails);
 		return "userDetails";
+	}
+	
+	@GetMapping("/newUser")
+	public String addNewUser(Model model)
+	{
+		model.addAttribute("userForm", new UserForm());
+		return "userDetails";
+	}
+	
+	@GetMapping("/showUser")
+	public String showUserById(@RequestParam(name="id") int id, Model model)
+	{
+		UserDetails user = userService.findById(id);
+		if (user == null){
+			model.addAttribute("id", id);
+			return "notfounderror";
+		}
+		model.addAttribute("userDetails", userService.findById(id));
+		return "registration";
+	}
+	
+	@GetMapping("/user")
+	public String showUserByIdPlease(@RequestParam(name="id") int id, Model model)
+	{
+		UserDetails user = userService.findById(id);
+		if (user == null){
+			model.addAttribute("id", id);
+			return "notfounderror";
+		}
+		model.addAttribute("userDetails", user);
+		return "userDetail";
 	}
 
 }

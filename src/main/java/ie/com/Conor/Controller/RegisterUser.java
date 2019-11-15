@@ -20,34 +20,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RegisterUser {
-
+/*
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping
+/*	@GetMapping
 	 public String showRegistrationForm(Model model) 
 	{
+		m
 		 return "registration";
-  }
+  }*/
 	
-	@GetMapping("newUser")
-	public String addNewUser(Model model)
-	{
-		model.addAttribute("userForm", new UserForm());
-		return "userDetails";
-	}
-	
-	@GetMapping("/showUser")
-	public String showUserById(@RequestParam(name="id") int id, Model model)
-	{
-		UserDetails user = userService.findById(id);
-		if (user == null){
-			model.addAttribute("id", id);
-			return "notfounderror";
-		}
-		model.addAttribute("userDetails", userService.findById(id));//create findbyid method 
-		return "userDetails";
-	}
 	
 
 
