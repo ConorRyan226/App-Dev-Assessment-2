@@ -9,7 +9,8 @@
 		<div th:insert="fragments.html :: menu"></div>
 	</header>
 	<h1>
-	<span>OOPS</span>
+	<span th:text="${userDetails.firstName}">OOOPS</span>
+    <span th:text="${userDetails.email}">OOOPS</span>	
 	</h1>
 	
 	<footer th:insert="fragments.html :: footer"></footer>

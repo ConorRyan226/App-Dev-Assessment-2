@@ -26,10 +26,9 @@ public class Application implements CommandLineRunner{
 		UserDetails user1 = new UserDetails("Fred", "Bloggs", "fred.bloggs@cit.ie", "password");
 		userDao.save(user1);
 		Job kitchen = new Job("Fit kitchen", "IKEA full kitchen", user1);
-		UserDetails user2 = new UserDetails("Tim","Horgan","BigTim@cit.ie","TopDog1");
+		
+		UserDetails user2 = new UserDetails("Test","test","test@cit.ie","password");
 		userDao.save(user2);
-		UserDetails user3 = new UserDetails("Test","test","test@cit.ie","password");
-		userDao.save(user3);
 		
 		
 	}

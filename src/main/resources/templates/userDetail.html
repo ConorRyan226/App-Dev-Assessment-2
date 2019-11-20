@@ -10,6 +10,8 @@
 	</header>
 	<h1>
 	<span th:text="${userDetails.firstName}">OOOPS</span>
+		    <label for="email" th:text="#{userDetails.email}" ></label>
+	
 	</h1>
 	
 	<footer th:insert="fragments.html :: footer"></footer>

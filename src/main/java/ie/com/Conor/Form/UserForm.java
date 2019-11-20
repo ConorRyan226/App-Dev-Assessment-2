@@ -1,5 +1,7 @@
 package ie.com.Conor.Form;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,11 +15,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserForm {
-	@NotNull
-	@Size(min=1, max=30)
-	private String firstName;	
+	
+	@Size(min=2, max=30)
+	private String firstName;
+	@Size(min=2, max=30)
 	private String lastName;
 	private String email;
+	@Size(min=4, max=10)
 	private String password;
 	
 }

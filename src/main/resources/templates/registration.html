@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="fragments.html :: head"></div>
 
 <body>
 	<header>
@@ -7,9 +8,20 @@
 		<h1><span th:text="#{userDetails.heading}">Add a User</span></h1>
 	</header>
     <h1>Registration</h1>              
-	<form id="newUserForm" method="post" th:action="@{/register}" th:object="${userDetails}">
-		<label for="firstName" th:text="#{userDetails.firstName}" ></label>
-			                                    
+    <h3 th:if="${duplicate}" th:text="#{registration.duplicate}" ></h3>
+	<form id="userForm" method="post" th:action="@{/register}" th:object="${userForm}">
+	
+		<label for="firstName" th:text="#{userDetails.firstName}" ></label>	
+		<input type = "text" id="firstName" th:field="*{firstName}"/><span th:if="${#fields.hasErrors('firstName')}" th:errors = "*{firstName}"> Error</span>
+		<br>
+		<label for="lastName" th:text="#{userDetails.lastName}"></label>
+		<input type = "text" id="lastName" th:field="*{lastName}"/><span th:if="${#fields.hasErrors('lastName')}" th:errors = "*{lastName}"> Error</span>	                              
+		<br>
+		<label for="email" th:text="#{userDetails.email}"></label>
+		<input type = "email" id="email" th:field="*{email}"/><span th:if="${#fields.hasErrors('email')}" th:errors = "*{email}"> Error</span>
+		<br>
+		<label for="password" th:text="#{userDetails.password}"></label>
+		<input type = "password" id="password" th:field="*{password}"/><span th:if="${#fields.hasErrors('password')}" th:errors = "*{password}"> Error</span>
 		<br>
 		<input type="submit" th:value="#{userDetails.addUser}"/>
 	</form>

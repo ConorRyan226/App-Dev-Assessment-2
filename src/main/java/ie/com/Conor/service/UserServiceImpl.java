@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public UserDetails save(UserDetails userDetails) {
-		if (userDao.existsById(userDetails.getId()))
+		if (userDao.existsByFirstName(userDetails.getFirstName()))// change to email
 			return null;
 		return userDao.save(userDetails);	
 	}
