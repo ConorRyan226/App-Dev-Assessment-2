@@ -8,10 +8,13 @@
 	<header>
 		<div th:insert="fragments.html :: menu"></div>
 	</header>
-	<h1>
-	<span th:text="${userDetails.firstName}">OOOPS</span>
-    <span th:text="${userDetails.email}">OOOPS</span>	
-	</h1>
+    
+    <table>
+    <tr th:each="userDetails,iterationCount : ${userDetails}" th:class="${iterationCount.odd}? 'odd'" th:object="${userDetails}"	>			
+			<td th:text="*{id}">1</td>
+			<td><a th:text="*{firstName}" th:href="@{userDetails/} + *{id}">USER</a></td>
+		</tr>
+	</table>	
 	
 	<footer th:insert="fragments.html :: footer"></footer>
 

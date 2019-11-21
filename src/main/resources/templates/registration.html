@@ -6,8 +6,7 @@
 	<header>
 		<div th:insert="fragments.html :: menu"></div>
 		<h1><span th:text="#{userDetails.heading}">Add a User</span></h1>
-	</header>
-    <h1>Registration</h1>              
+	</header>              
     <h3 th:if="${duplicate}" th:text="#{registration.duplicate}" ></h3>
 	<form id="userForm" method="post" th:action="@{/register}" th:object="${userForm}">
 	

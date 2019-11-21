@@ -6,13 +6,28 @@
 	<header>
 		<div th:insert="fragments.html :: menu"></div>
 	</header>
-	<main>
-
-		<h1><span th:text="#{index.welcome}">REVERSE AUCTION</span></h1>
- 		
- 		<p><span th:text="#{index.test}">default</span></p>
-	</main>
+	     <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+          </div>
+        </div>
+      </div>
+    <div class="container">
+      <div class="hero-unit">
+        <h1>Reverse Auction</h1>
+        <br>
+        <h2>
+          Welcome to the Reverse Auction online application!
+          Get started quickly by signing up.
+        </h2>
+        <p>
+		  <a th:href="@{/newUser}"><span th:text="#{navigation.userDetail}">BLAH</span></a>
+        </p>
+      </div>
 	 <footer th:insert="fragments.html :: footer"></footer> 
+	 </div>
 </body>
 </html>
 
