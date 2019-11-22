@@ -12,6 +12,6 @@ public interface JobDao extends JpaRepository<Job, Integer>{
   	 boolean existsById(Integer id);
    	 
 	 @Query("SELECT c.jobTitle FROM Job c where c.id = :id")
-	 String findNameById(@Param("id") int id);
+	 String findJobById(@Param("id") int id);
 
 }

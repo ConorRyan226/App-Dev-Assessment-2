@@ -10,12 +10,15 @@ import ie.com.Conor.entities.UserDetails;
 
 public interface UserDao extends JpaRepository<UserDetails, Integer>{
 	
-   	 boolean existsById(Integer id);
+   	 boolean existsById(Integer id); 
+   	 boolean existsByEmail(String email);
    	 
 	 @Query("SELECT c.firstName FROM UserDetails c where c.id = :id")
 	 String findNameById(@Param("id") int id);
 	 boolean existsByFirstName(String name);//delete 
 	 
-// just a test
-	//boolean existsByUserName(String name);
+	 
+	 @Query("SELECT c.firstName FROM UserDetails c where c.email = :email")
+	 String findNameofUserByEmail(@Param("email") String email);
+	
 }

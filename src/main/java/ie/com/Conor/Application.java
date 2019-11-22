@@ -29,12 +29,13 @@ public class Application implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		UserDetails user1 = new UserDetails("Fred", "Bloggs", "fred.bloggs@cit.ie", "password");
 		userDao.save(user1);
+		UserDetails user2 = new UserDetails("Test","test","test@cit.ie","password");
+		userDao.save(user2);
 		
 		Job kitchen = new Job("Fit kitchen", "IKEA full kitchen", user1);
 		jobDao.save(kitchen);
-		
-		UserDetails user2 = new UserDetails("Test","test","test@cit.ie","password");
-		userDao.save(user2);
+		Job bathroom = new Job("Fix toilet", "IKEA new Toilet", user2);
+		jobDao.save(bathroom);
 		
 		
 	}

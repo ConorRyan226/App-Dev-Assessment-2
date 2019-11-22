@@ -28,10 +28,10 @@ import lombok.Setter;
 
 public class Job {
 	
-	public Job(String string, String string2, UserDetails user) {
+	public Job(String jobTitle, String jobDesc, UserDetails user) {
 		// TODO Auto-generated constructor stub
-		this.jobTitle = string;
-		this.jobDesc = string2;
+		this.jobTitle = jobTitle;
+		this.jobDesc = jobDesc;
 		this.user = user;
 	}
 

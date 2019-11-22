@@ -6,8 +6,7 @@ import ie.com.Conor.entities.Job;
 
 
 public interface JobService {
-	List<Job> findJobsAlphabticalOrder();
-
-	Job findJob(int jobId);
+	Job findJobById(int jobId);
+	List<Job> findAllJobs();
 	Job save(Job job);
 }

@@ -40,7 +40,7 @@ public class UserDetails {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable=false, unique=true)
+	@Column//(nullable=false, unique=true)
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -50,6 +50,5 @@ public class UserDetails {
 	List<Job> userJobs;
 	
 	@OneToMany(fetch = FetchType.EAGER)
-	//private Bid bids;
 	List<Bid> bids;
 }

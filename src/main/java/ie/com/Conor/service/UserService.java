@@ -8,6 +8,7 @@ public interface UserService {
 
 	List <UserDetails> getUserDetails();
 	UserDetails findById(int id);
+	String findNameofUserByEmail(String Email);
 	UserDetails save(UserDetails userDetails);
 	
 

@@ -28,13 +28,13 @@ public class SchedulingTasks {
  @Autowired
  UserService userService;
 
- // Every 60000ms print the list of towns.
- @Scheduled(fixedRate = 60000)
+
+ @Scheduled(fixedRate = 10000)
  public void listProjects() {
    List<UserDetails> users = userService.getUserDetails();
    String s = "";
    for (UserDetails details: users)
-      s += details.getFirstName() + " "; //Should change this to username througout the project
+      s += details.getEmail() + " "; //Should change this to username througout the project
    log.info(s);
  }
 }

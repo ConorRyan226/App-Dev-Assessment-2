@@ -11,9 +11,11 @@
 
   <div th:fragment="menu">
 		<nav>
+		 <a th:href="@{/}"><span th:text="#{navigation.home}">BLAH</span></a>
+		  <a th:href="@{/login}"><span th:text="#{navigation.login}">BLAH</span></a>
+		   <a th:href="@{/newUser}"><span th:text="#{navigation.userDetail}">BLAH</span></a>
 		  <a th:href="@{/userDetails}"><span th:text="#{navigation.userDetails}">BLAH</span></a>
-		  <a th:href="@{/newUser}"><span th:text="#{navigation.userDetail}">BLAH</span></a>
-		  <a th:href="@{/jobs}"><span th:text="#{navigation.job}">BLAH</span></a>
+		  <a th:href="@{/job}"><span th:text="#{navigation.job}">BLAH</span></a>
         </nav> 
  </div>
 

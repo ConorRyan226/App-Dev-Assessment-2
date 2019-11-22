@@ -3,6 +3,7 @@ package ie.com.Conor.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import ie.com.Conor.dao.UserDao;
 import ie.com.Conor.entities.UserDetails;
 
@@ -24,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public UserDetails save(UserDetails userDetails) {
-		if (userDao.existsByFirstName(userDetails.getFirstName()))// change to email
+		if (userDao.existsByFirstName(userDetails.getEmail()))
 			return null;
 		return userDao.save(userDetails);	
 	}
@@ -33,6 +34,14 @@ public class UserServiceImpl implements UserService {
 	public UserDetails findById(int id) {
 		// TODO Auto-generated method stub
 		return userDao.findById(id).get();
+	}
+	
+	@Override
+	public String findNameofUserByEmail(String email) {
+		// TODO Auto-generated method stub
+	if (userDao.existsByEmail(email))
+		return userDao.findNameofUserByEmail(email);
+		return null;
 	}
 
 

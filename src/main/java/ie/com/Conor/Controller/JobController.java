@@ -16,10 +16,10 @@ public class JobController {
 	@Autowired
 	JobService jobService;
 	
-	@GetMapping("/jobs")
-	public String showTowns(Model model)
+	@GetMapping("/job")
+	public String showJobs(Model model)
 	{
-		List<Job> job = jobService.findJobsAlphabticalOrder();
+		List<Job> job = jobService.findAllJobs();
 		model.addAttribute("job", job);
 		return "job";
 	}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:insert="fragments.html :: head"></div>
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu"></div>
+		<h1><span th:text="#{login.heading}">Add a User</span></h1>
+	</header>	
+	
+	<form id="userForm" method="post" th:action="@{/login}" th:object="${userForm}"> <!-- should be post ?-->
+	
+	<label for="email" th:text="#{userDetails.email}"></label>
+		<input type = "email" id="email" th:field="*{email}"/><span th:if="${#fields.hasErrors('email')}" th:errors = "*{email}"> Error</span>
+		<br>
+		<label for="password" th:text="#{userDetails.password}"></label>
+		<input type = "password" id="password" th:field="*{password}"/><span th:if="${#fields.hasErrors('password')}" th:errors = "*{password}"> Error</span>
+		<br>
+		<input type="submit" th:value="#{login.loginAccount}"/>
+		
+	</form>
+
+		
+	<footer th:insert="fragments.html :: footer"></footer>
+
+</body>
+</html>

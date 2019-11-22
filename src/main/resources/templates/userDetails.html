@@ -10,9 +10,11 @@
 	</header>
     
     <table>
-    <tr th:each="userDetails,iterationCount : ${userDetails}" th:class="${iterationCount.odd}? 'odd'" th:object="${userDetails}"	>			
+    <tr th:each="userDetails,iterationCount : ${userDetails}" th:class="${iterationCount.odd}? 'odd'" th:object="${userDetails}">			
 			<td th:text="*{id}">1</td>
 			<td><a th:text="*{firstName}" th:href="@{userDetails/} + *{id}">USER</a></td>
+			<td><a th:text="*{lastName}" th:href="@{userDetails/} + *{id}">USER</a></td>
+			<td><a th:text="*{email}" th:href="@{userDetails/} + *{id}">USER</a></td>
 		</tr>
 	</table>	
 	

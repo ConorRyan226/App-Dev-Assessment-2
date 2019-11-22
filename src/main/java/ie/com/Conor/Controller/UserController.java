@@ -43,17 +43,27 @@ public class UserController {
 		return "registration";
 	}
 	
-	@GetMapping("/showUser")
-	public String showUserById(@RequestParam(name="id") int id, Model model)
+	
+	
+	@PostMapping("/login")
+	public String login(@Valid UserForm userForm, BindingResult binding,RedirectAttributes redirectAttributes )
 	{
-		UserDetails user = userService.findById(id);
-		if (user == null){
-			model.addAttribute("id", id);
-			return "notfounderror";
+		if(binding.hasErrors())
+			return "login";
+		
+		UserDetails userDetails = new UserDetails(userForm.getFirstName(),userForm.getLastName(),userForm.getEmail(),userForm.getPassword());
+		userDetails = userService.save(userDetails);
+		
+		if(userDetails != null)
+			return "redirect:login";// change to login page
+		else {
+			redirectAttributes.addFlashAttribute("duplicate", true);
+			return "redirect:login";
 		}
-		model.addAttribute("userDetails", userService.findById(id));
-		return "registration";
+		
 	}
+	
+	
 	
 	@GetMapping("/user")
 	public String showUserByIdPlease(@RequestParam(name="id") int id, Model model)
@@ -66,6 +76,8 @@ public class UserController {
 		model.addAttribute("userDetails", user);
 		return "userDetail";
 	}
+	
+	
 	@PostMapping("/register")
 	public String register (@Valid UserForm userForm, BindingResult binding,RedirectAttributes redirectAttributes )
 	{
