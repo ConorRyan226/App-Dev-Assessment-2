@@ -1,11 +1,19 @@
 package ie.com.Conor.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,8 +35,31 @@ public class Bid {
 	
 	@ManyToOne
 	private Job bidJob;
+
 	
-	@ManyToOne
+	@ManyToOne( fetch=FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	private Job jobId;
+
+	@ManyToOne( fetch=FetchType.EAGER)
+    @JoinColumn(nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
 	private UserDetails userBid;
+	
+	
+	public Bid(int bidValue, Job jobId, UserDetails userBid) {
+		this.bidValue = bidValue;
+		this.jobId = jobId;
+		this.userBid = userBid;
+	}
+
+	@Override
+	public String toString() {
+		return "Bid [value=" + bidValue + ", job="+ jobId + "User=" + userBid + "]";
+	}
+
 	
 }

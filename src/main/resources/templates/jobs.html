@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:insert="fragments.html :: head"></div>
 
@@ -12,6 +12,7 @@
     <tr th:each="job,iterationCount : ${job}" th:class="${iterationCount.odd}? 'odd'" th:object="${job}">			
 			<td th:text="*{jobId}">1</td>
 			<td><a th:text="*{jobTitle}" th:href="@{job/} + *{jobId}">BROKE</a></td>
+			<td><a th:text="*{jobDesc}" th:href="@{job/} + *{jobId}">USER</a></td>
 		</tr>
 	</table>	
 	

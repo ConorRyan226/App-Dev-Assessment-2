@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:insert="fragments.html :: head"></div>
+
+<body>
+<header>
+		<div th:insert="fragments.html :: menu"></div>  
+			<h1><span th:text="#{newbid.heading}">New Bid</span></h1>
+	</header>
+	
+    <form method="post" th:action="@{/bid}" th:object="${bidForm}">
+		<label for="bidValue" th:text="#{newBid.bidValue}" ></label>
+			<input id="bidValue" type="text" th:field="*{bidValue}"/>
+
+		        <span th:if="${#fields.hasErrors('bidValue')}" th:errors="*{bidValue}" >Error</span> 
+		<br>
+		<label for="userDetails" th:text="#{newbid.chooseUser}"></label>
+		<select th:field="*{id}">
+			<option th:each="userDetails: ${userDetails}" th:text="${userDetails.firstName}" th:value="${userDetails.id}"/>
+		</select>
+		<br>
+		<input type="submit" th:value="#{newbid.addBid}"/>
+	</form>
+
+	<footer th:insert="fragments.html :: footer"></footer>
+</body>
+</html>

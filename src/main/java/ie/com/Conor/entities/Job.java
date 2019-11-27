@@ -37,6 +37,7 @@ public class Job {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column
 	private int jobId;
 	private String jobTitle;
 	private String jobDesc;

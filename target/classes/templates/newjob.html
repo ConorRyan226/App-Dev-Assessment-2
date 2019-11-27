@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:insert="fragments.html :: head"></div>
+
+
+<body>
+	<header>
+		<div th:insert="fragments.html :: menu"></div>
+		<h1><span th:text="#{newjob.heading}">New Job</span></h1>
+	</header>
+	
+	<h3 th:if="${duplicate}" th:text="#{newjob.duplicate}" ></h3>
+	<form method="post" th:action="@{/newjob}" th:object="${jobForm}">
+	
+	 	<label for="jobTitle" th:text="#{job.jobTitle}" ></label>
+	 	<input type="text" id="jobTitle" th:field="*{jobTitle}"/><span th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}" >Error</span> 
+	 	<br>
+	 	<label for="jobDesc" th:text="#{job.jobDesc}" ></label>
+	 	<input type="text" id="jobDesc" th:field="*{jobDesc}"/><span th:if="${#fields.hasErrors('jobDesc')}" th:errors="*{jobDesc}" >Error</span> 
+	
+		<br>
+			<input type="submit" th:value="#{newjob.addjob}"/>
+		</form>
+		<h3 class="error" th:if="${duplicate}" th:text="#{newjob.duplicate}">Error</h3>
+	</form>
+
+	
+	<footer th:insert="fragments.html :: footer"></footer>
+
+</body>
+</html>

@@ -11,5 +11,9 @@ public interface UserService {
 	String findNameofUserByEmail(String Email);
 	UserDetails save(UserDetails userDetails);
 	
+	UserDetails findUser(int userId);
+	List<UserDetails> listFirstNameInAlphabeticalOrder();
+	UserDetails findByFirstName(String userFirstName);
+	
 
 }

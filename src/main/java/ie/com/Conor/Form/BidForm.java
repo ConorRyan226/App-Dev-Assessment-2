@@ -1,6 +1,7 @@
 package ie.com.Conor.Form;
 
-import javax.validation.constraints.Size;
+
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,10 +12,10 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JobForm {
-	
-	@Size(min=2, max=30)
-	private String jobTitle;
-	@Size(min=2, max=30)
-	private String jobDesc;
+public class BidForm {
+
+	@NotNull
+	private int bidValue;
+	private int jobId;
+	private int userId;
 }

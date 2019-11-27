@@ -5,20 +5,15 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.BindingResultUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+import ie.com.Conor.Form.JobForm;
 import ie.com.Conor.Form.UserForm;
 import ie.com.Conor.entities.UserDetails;
 import ie.com.Conor.service.UserService;
@@ -36,17 +31,22 @@ public class UserController {
 		return "userDetails";
 	}
 	
-	@GetMapping("/newUser")
+	@GetMapping(value = "/newUser")
 	public String addNewUser(Model model)
 	{
 		model.addAttribute("userForm", new UserForm());
 		return "registration";
 	}
 	
-	
+	@GetMapping("/login")
+	public String login(Model model)
+	{
+		//model.addAttribute("userForm", new UserForm());
+		return "login";
+	}
 	
 	@PostMapping("/login")
-	public String login(@Valid UserForm userForm, BindingResult binding,RedirectAttributes redirectAttributes )
+	public String login(@Valid UserForm userForm, BindingResult binding,RedirectAttributes redirectAttributes)
 	{
 		if(binding.hasErrors())
 			return "login";
@@ -55,10 +55,10 @@ public class UserController {
 		userDetails = userService.save(userDetails);
 		
 		if(userDetails != null)
-			return "redirect:login";// change to login page
+			return "redirect:login";
 		else {
 			redirectAttributes.addFlashAttribute("duplicate", true);
-			return "redirect:login";
+			return "redirect:index";
 		}
 		
 	}
@@ -66,7 +66,7 @@ public class UserController {
 	
 	
 	@GetMapping("/user")
-	public String showUserByIdPlease(@RequestParam(name="id") int id, Model model)
+	public String showUserById(@RequestParam(name="id") int id, Model model)
 	{
 		UserDetails user = userService.findById(id);
 		if (user == null){
@@ -79,7 +79,7 @@ public class UserController {
 	
 	
 	@PostMapping("/register")
-	public String register (@Valid UserForm userForm, BindingResult binding,RedirectAttributes redirectAttributes )
+	public String register(@Valid UserForm userForm, BindingResult binding,RedirectAttributes redirectAttributes )
 	{
 		if(binding.hasErrors())
 			return "registration";

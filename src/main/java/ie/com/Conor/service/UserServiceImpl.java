@@ -43,6 +43,21 @@ public class UserServiceImpl implements UserService {
 		return userDao.findNameofUserByEmail(email);
 		return null;
 	}
-
-
+	
+	@Override
+	public UserDetails findUser(int userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
+	
+	@Override
+	public List<UserDetails> listFirstNameInAlphabeticalOrder() {
+		return userDao.findAllByOrderByFirstNameAsc();
+	}
+	@Override
+	public UserDetails findByFirstName(String userFirstName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

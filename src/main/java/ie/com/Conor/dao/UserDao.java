@@ -13,9 +13,16 @@ public interface UserDao extends JpaRepository<UserDetails, Integer>{
    	 boolean existsById(Integer id); 
    	 boolean existsByEmail(String email);
    	 
+   	UserDetails findByFirstName(String firstName);
+	boolean existsByFirstName(String x);
+	
+   	 
+   	List<UserDetails> findAllByOrderByFirstNameAsc();
+	@Query("SELECT u.firstName FROM UserDetails u where u.id = :id") 
+	String findFirstNameOfUserById(@Param("id") int id);
+   	 
 	 @Query("SELECT c.firstName FROM UserDetails c where c.id = :id")
 	 String findNameById(@Param("id") int id);
-	 boolean existsByFirstName(String name);//delete 
 	 
 	 
 	 @Query("SELECT c.firstName FROM UserDetails c where c.email = :email")
