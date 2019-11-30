@@ -31,7 +31,9 @@ public class Bid {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int bidId;
-	private double bidValue;
+	
+	
+	public double bidValue;
 	
 	@ManyToOne
 	private Job bidJob;
@@ -47,18 +49,18 @@ public class Bid {
     @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	private UserDetails userBid;
+	private UserDetails userDetails;
 	
 	
-	public Bid(int bidValue, Job jobId, UserDetails userBid) {
+	public Bid(int bidValue, Job jobId, UserDetails userDetails) {
 		this.bidValue = bidValue;
 		this.jobId = jobId;
-		this.userBid = userBid;
+		this.userDetails = userDetails;
 	}
 
 	@Override
 	public String toString() {
-		return "Bid [value=" + bidValue + ", job="+ jobId + "User=" + userBid + "]";
+		return "Bid [value=" + bidValue + ", job="+ jobId + "User=" + userDetails + "]";
 	}
 
 	

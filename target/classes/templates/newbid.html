@@ -7,20 +7,30 @@
 		<div th:insert="fragments.html :: menu"></div>  
 			<h1><span th:text="#{newbid.heading}">New Bid</span></h1>
 	</header>
-	
-    <form method="post" th:action="@{/bid}" th:object="${bidForm}">
-		<label for="bidValue" th:text="#{newBid.bidValue}" ></label>
+  	<form method="post" th:action="@{/newbid}" th:object="${bidForm}">
+		<label for="bidValue" th:text="#{newbid.bidValue}" ></label>
 			<input id="bidValue" type="text" th:field="*{bidValue}"/>
-
-		        <span th:if="${#fields.hasErrors('bidValue')}" th:errors="*{bidValue}" >Error</span> 
+		        <span th:if="${#fields.hasErrors('bidValue')}" th:errors="*{bidValue}" >Error</span>
+		        
 		<br>
-		<label for="userDetails" th:text="#{newbid.chooseUser}"></label>
-		<select th:field="*{id}">
-			<option th:each="userDetails: ${userDetails}" th:text="${userDetails.firstName}" th:value="${userDetails.id}"/>
+		
+		<label for="job" th:text="#{newbid.chooseJob}"></label>
+		<select th:field="*{jobId}">
+			<option  th:each="job: ${jobs}" th:text="${job.jobTitle}" th:value="${job.jobId}"/>
 		</select>
+		
 		<br>
+		
+		<label for="userDetail" th:text="#{newbid.chooseUser}"></label>
+		<select th:field="*{userId}">
+			<option  th:each="userDetail: ${userDetails}" th:text="${userDetails.firstName}" th:value="${userDetails.userId}"/>
+		</select>
+		
+		<br>
+		
 		<input type="submit" th:value="#{newbid.addBid}"/>
 	</form>
+	
 
 	<footer th:insert="fragments.html :: footer"></footer>
 </body>

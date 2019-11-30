@@ -15,7 +15,10 @@ import lombok.Setter;
 public class BidForm {
 
 	@NotNull
+	private int bidId;
 	private int bidValue;
 	private int jobId;
+	
+
 	private int userId;
 }

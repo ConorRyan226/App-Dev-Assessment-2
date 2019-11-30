@@ -28,17 +28,18 @@ import lombok.Setter;
 
 public class Job {
 	
-	public Job(String jobTitle, String jobDesc, UserDetails user) {
+	public Job(String jobTitle, String jobDesc, UserDetails userDetails) {
 		// TODO Auto-generated constructor stub
 		this.jobTitle = jobTitle;
 		this.jobDesc = jobDesc;
-		this.user = user;
+		this.userDetails = userDetails;
 	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column
 	private int jobId;
+	
 	private String jobTitle;
 	private String jobDesc;
 	
@@ -47,5 +48,5 @@ public class Job {
 	//	@NotNull @Size(max = 10) add these to a form package 
 	
 	@ManyToOne
-	UserDetails user;
+	UserDetails userDetails;
 }

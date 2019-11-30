@@ -38,8 +38,8 @@ public class BidServiceImpl implements BidService{
 	public Bid save(Bid bid) {
 		
 		log.info(bid.toString());
-		if(bidDao.existsByBidIdAndUserBid_Id(bid.getBidId(), bid.getUserBid().getId()))
-			return null;
+		bidDao.existsByBidIdAndUserDetails_userId(bid.getBidId(), bid.getUserDetails().getUserId());
 		return bidDao.save(bid);
-	}	
+	}
+
 }

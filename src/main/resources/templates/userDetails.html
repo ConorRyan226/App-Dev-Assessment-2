@@ -7,14 +7,15 @@
 <body>
 	<header>
 		<div th:insert="fragments.html :: menu"></div>
+		<h1><span th:text="#{userDetail.heading}">List of registered users</span></h1>
 	</header>
     
     <table>
     <tr th:each="userDetails,iterationCount : ${userDetails}" th:class="${iterationCount.odd}? 'odd'" th:object="${userDetails}">			
-			<td th:text="*{id}">1</td>
-			<td><a th:text="*{firstName}" th:href="@{userDetails/} + *{id}">USER</a></td>
-			<td><a th:text="*{lastName}" th:href="@{userDetails/} + *{id}">USER</a></td>
-			<td><a th:text="*{email}" th:href="@{userDetails/} + *{id}">USER</a></td>
+			<td th:text="*{userId}">1</td>
+			<td><a th:text="*{firstName}" th:href="@{userDetails/} + *{userId}">USER</a></td>
+			<td><a th:text="*{lastName}" th:href="@{userDetails/} + *{userId}">USER</a></td>
+			<td><a th:text="*{email}" th:href="@{userDetails/} + *{userId}">USER</a></td>
 		</tr>
 	</table>	
 	

@@ -11,19 +11,20 @@ import ie.com.Conor.entities.UserDetails;
 
 public interface BidDao extends JpaRepository<Bid, Integer>{
 
-/*
-	List<Bid> findByUserFirstName(String firstName);
-	List<Bid> findByLastName(String lastName);
-	List<Bid> findByUserEmail(String email);
-	List<Bid> findByUserId(int id);
+
+	List<Bid> findByUserDetails_FirstName(String firstName);
+	List<Bid> findByUserDetails_LastName(String LastName);
+	List<Bid> findByUserDetails_Email(String Email);
+	List<Bid> findByUserDetails_userId(int userId);
 	
-	List<Bid> findByJobName(String jobName);
+	
+	//List<Bid> findByJob_JobTitle(String jobTitle);
 	List<Bid> findByJobId(int jobId);
-	*/
+
 		
-	List<Bid> findAllByOrderByBidId();
+	List<Bid> findAllByOrderByBidId();	
 	
-	boolean existsByBidIdAndUserBid_Id(int bidId, int id);
+	boolean existsByBidIdAndUserDetails_userId(int bidId, int userId);
 
 	List<Bid> findByJobId_jobId(int jobId);
 	

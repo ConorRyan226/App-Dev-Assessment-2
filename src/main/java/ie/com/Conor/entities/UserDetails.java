@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.relation.Role;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,6 +20,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +33,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "USER_DETAILS")
 public class UserDetails {
 	public UserDetails(String firstName, String lastName, String email, String password) {
 			this.firstName = firstName;
@@ -40,7 +43,7 @@ public class UserDetails {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int userId;
 	
 	@Column//(nullable=false, unique=true) SOMETHING ABOUT DESC HEREE
 	private String firstName;
@@ -48,9 +51,11 @@ public class UserDetails {
 	private String email;
 	private String password;
 	
-	@OneToOne
+	//@OneToOne
 	@JoinColumn(name = "roleEmail", nullable = false)
 	Role userRole;
+	
+	
 	
 	@Column
 	boolean userEnabled;
@@ -58,6 +63,12 @@ public class UserDetails {
 	@OneToMany
 	List<Job> userJobs;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	List<Bid> bids;
+	@OneToMany(mappedBy="userDetails", fetch=FetchType.EAGER, cascade= CascadeType.ALL)
+	@JsonIgnore
+    private List<Job> jobs = new ArrayList<Job>();
+	
+	@OneToMany(mappedBy="userDetails", fetch=FetchType.EAGER, cascade= CascadeType.ALL)
+	@JsonIgnore
+    private List<Bid> bids = new ArrayList<Bid>();
+	
 }

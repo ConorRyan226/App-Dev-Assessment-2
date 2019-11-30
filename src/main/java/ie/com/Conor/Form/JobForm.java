@@ -17,4 +17,6 @@ public class JobForm {
 	private String jobTitle;
 	@Size(min=2, max=30)
 	private String jobDesc;
+	
+	private int id;
 }

@@ -38,14 +38,13 @@ public class UserController {
 		return "registration";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping(value = "/login")
 	public String login(Model model)
 	{
-		//model.addAttribute("userForm", new UserForm());
 		return "login";
 	}
 	
-	@PostMapping("/login")
+	/*@PostMapping("/login")
 	public String login(@Valid UserForm userForm, BindingResult binding,RedirectAttributes redirectAttributes)
 	{
 		if(binding.hasErrors())
@@ -61,7 +60,7 @@ public class UserController {
 			return "redirect:index";
 		}
 		
-	}
+	}*/
 	
 	
 	
