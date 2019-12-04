@@ -21,11 +21,6 @@
 		
 		<br>
 		
-		<label for="userDetail" th:text="#{newbid.chooseUser}"></label>
-		<select th:field="*{userId}">
-			<option  th:each="userDetail: ${userDetails}" th:text="${userDetails.firstName}" th:value="${userDetails.userId}"/>
-		</select>
-		
 		<br>
 		
 		<input type="submit" th:value="#{newbid.addBid}"/>

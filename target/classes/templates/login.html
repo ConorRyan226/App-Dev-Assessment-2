@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" >
 <div th:insert="fragments.html :: head"></div>
 
 <body>
@@ -7,19 +7,31 @@
 		<div th:insert="fragments.html :: menu"></div>
 		<h1><span th:text="#{login.heading}">Add a User</span></h1>
 	</header>	
-	
-	<form id="userForm" method="post" th:action="@{/login}" th:object="${userForm}"> 
+  
+	<form id="userForm" method="post" th:action="@{/login}"> 
 	<label for="email" th:text="#{userDetails.email}"></label>
-		<input type = "email" name="email" th:field="*{email}"/><span th:if="${#fields.hasErrors('email')}" th:errors = "*{email}"> Error</span>
+		<input type = "email" name="email" />
 		<br>
 		<label for="password" th:text="#{userDetails.password}"></label>
-		<input type = "password" name="password" th:field="*{password}"/><span th:if="${#fields.hasErrors('password')}" th:errors = "*{password}"> Error</span>
+		<input type = "password" name="password" />
 		<br>
 		<input type="submit" th:value="#{login.loginAccount}"/>
 		
 	</form>
+<!--
+	<div class = "login-page">
+		<div class="form">
+			<div class="error" th:if="${param.error}">Invalid username and password</div>
+			<div class="error" th:if ="${param.logout}">You have been logged out</div>
+			<form>
+				<label>User Name : <input type="email" name="email"/></label>
+				<label>Password: <input type="password" name="password" /></label>
+				<input type="submit" value="Sign In"/>
+			</form>
+		</div>
+	</div>
 
-		
+-->		
 	<footer th:insert="fragments.html :: footer"></footer>
 
 </body>

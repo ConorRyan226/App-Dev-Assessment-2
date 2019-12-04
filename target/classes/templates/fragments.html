@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf extras springsecurity3">
 <head th:fragment="head">
 	<link rel="stylesheet" th:href="@{/css/styles.css}" type="text/css" />
 	<link rel="stylesheet" th:href="@{/css/flag-icon.css}" type="text/css" />
@@ -17,11 +17,28 @@
 		  <a th:href="@{/userDetails}"><span th:text="#{navigation.userDetails}">BLAH</span></a>
 		  <a th:href="@{/jobs}"><span th:text="#{navigation.job}">BLAH</span></a>
 		  <a th:href="@{/newjob}"><span th:text="#{navigation.newjob}">BLAH</span></a>
-		  <a th:href="@{/showbids}"><span th:text="#{navigation.showbids}">BLAH</span></a>
 		  <a th:href="@{/newbid}"><span th:text="#{navigation.newbid}">BLAH</span></a>
+		  <span sec:authorize= "isAuthenticated()">
+			<span sec:authentication = "No Name span">No Name</span>
+				<a th:href="@{/logout}" id="logoutbutton" th:text="#{navigation.logout}">
+				Logout Default
+				</a>
+			</span>
+	<a th:href ="@{/logout}" id = "logoutbutton" th:text="#{index.logout}"></a> 
         </nav> 
  </div>
-
+ 
+ 	<span sec:authorize ="hasRole('ROLE_USER')">
+ 		<a th:href ="@{/login}" id="loginbutton" th:text="#{index.login}">Login Default</a>
+ 	</span>
+ 	
+ 	<span sec:authroize ="!isAuthenticated()">
+ 		<a th:href ="@{/login}" id= "loginbutton" th:text= "#{index.login}">Login Default
+ 		</a>
+ 	</span>
+	 
+	
+	
     <div th:fragment="footer">
 		<span th:with="currentUrl=(${@currentUrlWithoutParam.apply('lang')})">
     		<a th:href="@{${currentUrl}(lang=fr)}"><i class="flag-icon flag-icon-fr"></i></a>

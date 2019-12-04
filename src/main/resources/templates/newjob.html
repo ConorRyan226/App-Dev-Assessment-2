@@ -19,12 +19,6 @@
 	 	<label for="jobDesc" th:text="#{job.jobDesc}" ></label>
 	 	<input type="text" id="jobDesc" th:field="*{jobDesc}"/><span th:if="${#fields.hasErrors('jobDesc')}" th:errors="*{jobDesc}" >Error</span> 
 		<br>
-		
-		<label for="userDetail" th:text="#{newjob.chooseUserDetail}"></label>
-		<select th:field="*{id}">
-			<option  th:each="userDetail: ${userDetails}" th:text="${userDetail.firstName}" th:value="${userDetail.id}"/>
-		</select>
-		
 		<br>
 		
 			<input type="submit" th:value="#{newjob.addjob}"/>

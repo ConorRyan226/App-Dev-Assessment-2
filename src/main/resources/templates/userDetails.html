@@ -9,9 +9,18 @@
 		<div th:insert="fragments.html :: menu"></div>
 		<h1><span th:text="#{userDetail.heading}">List of registered users</span></h1>
 	</header>
+	
+	<table>
+		<tr>
+			<th th:text="#{userDetails.userId}">UserID</th>
+			<th th:text="#{userDetails.firstName}">First Name</th>
+			<th th:text="#{userDetails.lastName}">Last Name</th>
+			<th th:text="#{userDetails.email}">Email</th>
+		</tr>
+	</table>
     
     <table>
-    <tr th:each="userDetails,iterationCount : ${userDetails}" th:class="${iterationCount.odd}? 'odd'" th:object="${userDetails}">			
+    <tr th:each="userDetail,iterationCount : ${userDetails}" th:class="${iterationCount.odd}? 'odd'" th:object="${userDetail}">			
 			<td th:text="*{userId}">1</td>
 			<td><a th:text="*{firstName}" th:href="@{userDetails/} + *{userId}">USER</a></td>
 			<td><a th:text="*{lastName}" th:href="@{userDetails/} + *{userId}">USER</a></td>
