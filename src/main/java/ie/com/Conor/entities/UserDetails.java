@@ -43,7 +43,7 @@ public class UserDetails {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int userId;
 	
 	public UserDetails( String firstName, String lastName,@NotNull @Email String email,@Size(min = 8) String password,
 		boolean userEnabled, Role userRole) {

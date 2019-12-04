@@ -6,14 +6,13 @@ package ie.com.Conor;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
+
+
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
@@ -26,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			
 			
 			http.authorizeRequests()
-			.antMatchers("/css/**", "/", "/login/*","/registration", "/jobs/*","/h2/*").permitAll()
+			.antMatchers("/css/**", "/", "/login/**","/registration/**", "/jobs/**","/h2/**").permitAll()
 			.antMatchers("/jobs").hasRole("USER")
 			.anyRequest().authenticated()
 			.and().formLogin().loginPage("/login").permitAll()

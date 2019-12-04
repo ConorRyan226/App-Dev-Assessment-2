@@ -3,7 +3,10 @@ package ie.com.Conor;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import ie.com.Conor.entities.UserDetails;
@@ -36,5 +39,12 @@ public class SchedulingTasks {
    for (UserDetails details: users)
       s += details.getEmail() + " "; //Should change this to username througout the project
    log.info(s);
+ }
+ @Bean
+ public
+ PasswordEncoder passwordEncoder ()
+ {
+ return new
+ BCryptPasswordEncoder();
  }
 }

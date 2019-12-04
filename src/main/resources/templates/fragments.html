@@ -12,19 +12,22 @@
   <div th:fragment="menu">
 		<nav>
 		  <a th:href="@{/}"><span th:text="#{navigation.home}">BLAH</span></a>
-		  <a th:href="@{/login}"><span th:text="#{navigation.login}">BLAH</span></a>
-		  <a th:href="@{/newUser}"><span th:text="#{navigation.userDetail}">BLAH</span></a>
-		  <a th:href="@{/userDetails}"><span th:text="#{navigation.userDetails}">BLAH</span></a>
+		  <a th:href="@{/registration}"><span th:text="#{navigation.userDetail}">BLAH</span></a>
 		  <a th:href="@{/jobs}"><span th:text="#{navigation.job}">BLAH</span></a>
-		  <a th:href="@{/newjob}"><span th:text="#{navigation.newjob}">BLAH</span></a>
-		  <a th:href="@{/newbid}"><span th:text="#{navigation.newbid}">BLAH</span></a>
 		  <span sec:authorize= "isAuthenticated()">
-			<span sec:authentication = "No Name span">No Name</span>
-				<a th:href="@{/logout}" id="logoutbutton" th:text="#{navigation.logout}">
+		  
+		  	<a th:href="@{/newjob}"><span th:text="#{navigation.newjob}">BLAH</span></a>
+		  	<a th:href="@{/newbid}"><span th:text="#{navigation.newbid}">BLAH</span></a>
+			<span sec:authentication = "name">No Name</span>
+			<a th:href="@{/logout}" id="logoutbutton" th:text="#{navigation.logout}">Logout Default</a>
+			</span>
+		  <span sec:authorize= "!isAuthenticated()">
+			
+				<a th:href="@{/login}" id="loginbutton" th:text="#{navigation.login}">
 				Logout Default
 				</a>
 			</span>
-	<a th:href ="@{/logout}" id = "logoutbutton" th:text="#{index.logout}"></a> 
+	
         </nav> 
  </div>
  

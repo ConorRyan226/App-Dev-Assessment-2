@@ -31,7 +31,8 @@ public class UserController {
 		return "userDetails";
 	}
 	
-	@GetMapping(value = "/newUser")
+	@GetMapping(value = "/registration")
+
 	public String addNewUser(Model model)
 	{
 		model.addAttribute("userForm", new UserForm());
