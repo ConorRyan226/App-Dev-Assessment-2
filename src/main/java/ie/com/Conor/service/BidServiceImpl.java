@@ -38,7 +38,7 @@ public class BidServiceImpl implements BidService{
 	public Bid save(Bid bid) {
 		
 		log.info(bid.toString());
-		//bidDao.existsByBidIdAndUserDetails_userId(bid.getBidId(), bid.getUserDetails().getUserId());
+		bidDao.existsByBidIdAndUserDetails_UserId(bid.getBidId(), bid.getUserDetails().getUserId());
 		return bidDao.save(bid);
 	}
 

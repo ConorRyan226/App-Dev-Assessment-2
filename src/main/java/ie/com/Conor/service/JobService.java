@@ -14,4 +14,6 @@ public interface JobService {
 	List<Job> findJobsAlphabticalOrder();
 	List<Job> findJobByJobName(String jobName);
 	
+	boolean closeJob(Job job);
+	
 }

@@ -57,5 +57,13 @@ public class JobServiceImpl implements JobService{
 			//return null;
 		return jobDao.save(job);
 	}
-	
+
+	@Override
+	public boolean closeJob(Job job) {
+		if (! jobDao.existsById(job.getJobId()))
+			return false;
+		jobDao.delete(job);
+		System.out.println(jobDao.existsByJobName(job.getJobTitle()));
+		return true;
+	}
 }

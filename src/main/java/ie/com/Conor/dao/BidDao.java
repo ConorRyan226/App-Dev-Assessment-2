@@ -25,9 +25,9 @@ public interface BidDao extends JpaRepository<Bid, Integer>{
 		
 	List<Bid> findAllByOrderByBidId();	
 	
-	boolean existsByBidIdAndUserDetails_userId(int bidId, int userId);
 
 	List<Bid> findByJobId_jobId(int jobId);
+	boolean existsByBidIdAndUserDetails_UserId(int bidId, int userId);
 	
 		
 	
