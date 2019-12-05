@@ -9,12 +9,15 @@
 	</header>
 	<table>
 		<tr>
-			<th th:text="#{bid.id}">ID</th>
+			<th th:text="#{bid.bidId}">ID</th>
 			<th th:text="#{bid.bidValue}">ID</th>
 		</tr>
-	<tr th:object = "${bid}">
-	 	<th th:text="#{bidId}">ID</th>
-	</table>	
+	<tr th:object="${bid}">
+			<td th:text="*{bidId}">ID</td>
+			<td th:text="*{bidValue}">Bid</td>
+			<td th:text="*{job.jobTitle}">job</td>
+		</tr>
+	</table>
 
 	
 	<footer th:insert="fragments.html :: footer"></footer> 

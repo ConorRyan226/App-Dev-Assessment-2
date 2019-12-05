@@ -1,5 +1,6 @@
 package ie.com.Conor.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,58 +12,41 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "Bid")
-
 public class Bid {
-	public Bid(double d) {
-		// TODO Auto-generated constructor stub
-		this.bidValue = d;
-	}
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int bidId;
 	
-	
+	@Column(nullable=false)
 	public double bidValue;
-	
-	@ManyToOne
-	private Job bidJob;
 
 	
 	@ManyToOne( fetch=FetchType.EAGER)
     @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	private Job jobId;
-
-	@ManyToOne( fetch=FetchType.EAGER)
-    @JoinColumn(nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonIgnore
-	private UserDetails userDetails;
+	private Job job;
 	
-	
-	public Bid(int bidValue, Job jobId, UserDetails userDetails) {
+	public Bid(int bidValue, Job job) {
+		// TODO Auto-generated constructor stub
 		this.bidValue = bidValue;
-		this.jobId = jobId;
-		this.userDetails = userDetails;
+		this.job = job;
 	}
 
 	@Override
 	public String toString() {
-		return "Bid [value=" + bidValue + ", job="+ jobId + "User=" + userDetails + "]";
+		return "Bid [value=" + bidValue + ", job="+ job  + "]";
 	}
 
 	

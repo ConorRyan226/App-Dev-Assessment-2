@@ -23,7 +23,7 @@ public class BidServiceImpl implements BidService{
 	
 	@Override
 	public List<Bid> findBidsByJobId(int jobId) {
-		return bidDao.findByJobId_jobId(jobId);
+		return bidDao.findByJob_JobId(jobId);
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class BidServiceImpl implements BidService{
 	public Bid save(Bid bid) {
 		
 		log.info(bid.toString());
-		bidDao.existsByBidIdAndUserDetails_UserId(bid.getBidId(), bid.getUserDetails().getUserId());
+	//	bidDao.existsByBidId(bid.getBidId());
 		return bidDao.save(bid);
 	}
 

@@ -1,18 +1,20 @@
 package ie.com.Conor.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,12 +42,16 @@ public class Job {
 	@Column
 	private int jobId;
 	
+
+	@Column(nullable=false)
 	private String jobTitle;
+
+	@Column(nullable=false)
 	private String jobDesc;
 	
-	@OneToMany
-	List<Bid> jobBids;
-	//	@NotNull @Size(max = 10) add these to a form package 
+	@OneToMany( mappedBy="job", fetch=FetchType.EAGER, cascade= CascadeType.ALL)
+	@JsonIgnore
+	private List<Bid> bids = new ArrayList<Bid>();
 	
 	@ManyToOne
 	UserDetails userDetails;

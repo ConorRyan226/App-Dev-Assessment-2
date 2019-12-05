@@ -3,6 +3,7 @@ package ie.com.Conor.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,6 +19,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,9 +48,9 @@ public class UserDetails {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
 	
-	public UserDetails( String firstName, String lastName,@NotNull @Email String email,@Size(min = 8) String password,
+	public UserDetails(String firstName, String lastName, String email, String password,
 		boolean userEnabled, Role userRole) {
-	super();
+
 	this.email = email;
 	this.password = password;
 	this.firstName = firstName;
@@ -55,7 +58,7 @@ public class UserDetails {
 	this.userEnabled = userEnabled;
 	this.userRole = userRole;
 }
-	@Column//(nullable=false, unique=true) SOMETHING ABOUT DESC HEREE
+	@Column
 	@NotNull
 	@Email
 	private String email;
@@ -65,7 +68,9 @@ public class UserDetails {
 	private String password;
 	@Column
 	private String firstName;
+	@Column
 	private String lastName;
+	
 	private boolean userEnabled;
 	
 	@OneToOne
@@ -73,8 +78,10 @@ public class UserDetails {
 	Role userRole;
 	
 	@OneToMany
+	@JsonIgnore
 	List<Job> userJobs;
 	
-	@OneToMany(fetch = FetchType.EAGER)
-	List<Bid> bids;
+	@OneToMany
+	@JsonIgnore
+    private List<Bid> bids = new ArrayList<Bid>();
 }

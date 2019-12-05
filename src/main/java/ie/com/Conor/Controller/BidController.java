@@ -32,14 +32,14 @@ public class BidController {
 	@Autowired 
 	UserService userService;
 	
-	@GetMapping("/showbidsbyjobid")
+	/*@GetMapping("/showbidsbyjobid")
 	public String showBidsByJobId(@PathVariable(name="id") int id, Model model)
 	{
 		
 		List<Bid> bids = bidService.findBidsByJobId(id);
 		model.addAttribute("bids", bids);
 		return "bids";
-	}
+	}*/
 	
 	@GetMapping("/showbids")
 	public String showBidsById(Model model) {
@@ -92,7 +92,7 @@ public class BidController {
 			return "newbid";
 		}
 		
-		Bid bid = new Bid(bidForm.getBidValue(), jobService.findJob(bidForm.getJobId()), userService.findUser(bidForm.getUserId()));
+		Bid bid = new Bid(bidForm.getBidValue(), jobService.findJob(bidForm.getJobId()));
 		
 		if (bidService.save(bid) == null)
 			{

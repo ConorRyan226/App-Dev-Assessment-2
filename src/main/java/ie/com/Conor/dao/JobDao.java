@@ -20,7 +20,7 @@ public interface JobDao extends JpaRepository<Job, Integer>{
 
 	List<Job> findJobByJobTitle(String jobTitle);
 
-	boolean existsByJobName(String jobTitle);
+	boolean existsByJobTitle(String jobTitle);
 
 	//boolean existsByJobTitleAndDesc(String jobTitle, String jobDesc, UserDetails userDetails);
 }

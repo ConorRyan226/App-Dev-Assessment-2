@@ -63,7 +63,7 @@ public class JobServiceImpl implements JobService{
 		if (! jobDao.existsById(job.getJobId()))
 			return false;
 		jobDao.delete(job);
-		System.out.println(jobDao.existsByJobName(job.getJobTitle()));
+		System.out.println(jobDao.existsByJobTitle(job.getJobTitle()));
 		return true;
 	}
 }
